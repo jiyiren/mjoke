@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--常用颜色-->
+    <color name="mblack">#000000</color>
+    <color name="mwhite">#ffffff</color>
+    <color name="mtransport">#00000000</color>
+
+
+    <!-- 主页，人头像边框颜色-->
+    <color name="header_border_color">#ffffff</color>
+    <!-- 主页，人头像点击的颜色-->
+    <color name="header_press">#22000000</color>
+
+    <!--maincolor_off是字体默认颜色，maincolor是字体点击颜色和其他主色-->
+    <color name="maincolor_off">#766928</color>
+    <color name="maincolor">#56dd6f</color>
+
+    <!--标题栏个人中心，菜单等点击press后的颜色-->
+    <color name="title_rl_press">#45d05e</color>
+
+    <!--弹出的菜单背景色-->
+    <color name="popmenu_bg">#e6f3e8</color>
+    <color name="popmenu_bg_press">#d4e3d6</color>
+
+
+    <!--tab栏目的背景色-->
+    <color name="tab_bg">#fffff9ae</color>
+
+    <!-- 标题栏文字默认颜色-->
+    <color name="titilebar_text_color">#ffffff</color>
+    <!-- 标题栏back图标点击下去的颜色-->
+    <color name="titllebar_back_on">#45d05e</color>
+    <color name="login_reg_bg_off">#551a1b1a</color>
+    <color name="login_reg_bg_on">#55c6d0c8</color>
+
+    <!-- 个人中心下部分背景-->
+    <color name="person_center_down_bg">#dbdbdb</color>
+    <!-- 个人中心item点击颜色-->
+    <color name="personitem_icon_border">#ffff6d6f</color>
+    <color name="personitem_on_focus">#5fffcccc</color>
+    <color name="person_center_editinfo_bt_on_color">#009900</color>
+    <color name="person_center_editinfo_bt_off_color">#00cc00</color>
+    <color name="person_center_logout_bt_on_color">#990000</color>
+    <color name="person_center_logout_bt_off_color">#cc0000</color>
+
+
+
+
+</resources>

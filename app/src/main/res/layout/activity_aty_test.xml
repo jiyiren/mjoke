@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jiyi="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/maincolor"
+    tools:context="app.jiyi.com.mjoke.aty.AtyTest">
+
+    <app.jiyi.com.mjoke.utilview.CircleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/mhead"
+        android:clickable="true"
+        jiyi:borderColor="#fff"
+        jiyi:borderWidth="2dp"
+        jiyi:hoverColor="#22000000"></app.jiyi.com.mjoke.utilview.CircleImageView>
+
+    <app.jiyi.com.mjoke.utilview.RoundImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@mipmap/mhead"
+        jiyi:borderColor="@color/mwhite"
+        jiyi:borderRadius="6dp"
+        jiyi:borderWidth="2dp"/>
+</LinearLayout>

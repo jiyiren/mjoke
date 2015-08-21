@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/maincolor"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:id="@+id/mainact_out"
+    >
+
+    <Button android:text="进入主界面"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="enterMain"/>
+    <Button android:text="进入Test界面"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="enterTest"/>
+
+</LinearLayout>

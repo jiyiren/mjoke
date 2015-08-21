@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.jiyi.com.mjoke" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aty.AtyMainView"
+            android:label="@string/title_activity_aty_main_view" >
+        </activity>
+        <activity
+            android:name=".aty.AtyPersonCenter"
+            android:label="@string/title_activity_aty_person_center" >
+        </activity>
+        <activity
+            android:name=".aty.BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
+        <activity
+            android:name=".aty.AtyTest"
+            android:label="@string/title_activity_aty_test" >
+        </activity>
+    </application>
+
+</manifest>

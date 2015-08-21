@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PersonItemView">
+        <attr name="msrc" format="reference"></attr>
+        <attr name="text" format="reference|string"></attr>
+        <attr name="showline">
+            <enum name="full" value="0" />
+            <enum name="half" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundImageView">
+        <attr name="borderWidth" format="reference|dimension">
+        </attr>
+        <attr name="borderRadius" format="reference|dimension">
+        </attr>
+        <attr name="borderColor" format="reference|color">
+        </attr>
+        <attr name="hoverColor" format="reference|color">
+        </attr>
+    </declare-styleable>
+</resources>

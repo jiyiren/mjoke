@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 这是弹出菜单item点击的效果背景-->
+    <item android:state_pressed="true" android:drawable="@color/popmenu_bg_press"/>
+    <item android:drawable="@color/popmenu_bg"/>
+</selector>

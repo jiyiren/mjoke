@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Mjoke</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_aty_main_view">AtyMainView</string>
+
+
+    <string name="popmenu_set">我的设置</string>
+    <string name="popmenu_refresh">刷新内容</string>
+    <string name="popmenu_edit">发表文章</string>
+    <string name="popmenu_search">搜索内容</string>
+    <string name="popmenu_email">反馈问题</string>
+
+    <string name="mainview_tab_01">最新推荐</string>
+    <string name="mainview_tab_02">最热分享</string>
+    <string name="mainview_tab_03">搞笑段子</string>
+    <string name="mainview_tab_04">清纯妹子</string>
+
+    <string name="title_activity_aty_person_center">AtyPersonCenter</string>
+    <string name="personcenter">个人中心</string>
+    <string name="personcenter_edit">编辑资料</string>
+    <string name="personcenter_edit_motto">快去撰写您的座右铭吧</string>
+    <string name="personcenter_top_login">登录</string>
+    <string name="personcenter_top_register">注册</string>
+
+    <string name="personcenter_foot">我的足迹</string>
+    <string name="personcenter_down_article">我的文章</string>
+    <string name="personcenter_down_hide">我的收藏</string>
+    <string name="personcenter_down_share">我的分享</string>
+    <string name="personcenter_down_look">我的浏览</string>
+    <string name="personcenter_down_comment">我的评论</string>
+
+    <string name="personcenter_find">我的发现</string>
+    <string name="personcenter_publish">发表文章</string>
+    <string name="personcenter_search">搜索文章</string>
+    <string name="personcenter_set">设置</string>
+    <string name="personcenter_edit_info">编辑信息</string>
+    <string name="personcenter_logout">退出登录</string>
+
+
+
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_aty_test">AtyTest</string>
+
+</resources>

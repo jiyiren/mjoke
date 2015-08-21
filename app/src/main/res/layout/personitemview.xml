@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jiyi="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        >
+
+        <app.jiyi.com.mjoke.utilview.RoundImageView
+            android:id="@+id/personitem_iv_icon"
+            android:padding="2dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            jiyi:borderWidth="1dp"
+            jiyi:borderColor="@color/personitem_icon_border"
+            jiyi:borderRadius="4dp"
+            android:src="@mipmap/person_center_article" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" 
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/personitem_click">
+
+            <TextView
+                android:id="@+id/personitem_tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:text="我的文章"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/p_row" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView 
+        android:id="@+id/personitem_long"
+        android:layout_marginLeft="75dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/long_term"/>
+</LinearLayout>
