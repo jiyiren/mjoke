@@ -27,32 +27,39 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
                 <app.jiyi.com.mjoke.utilview.CircleImageView
+                    android:id="@+id/person_center_top_header"
                     android:layout_alignParentLeft="true"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:clickable="true"
                     jiyi:borderColor="@color/header_border_color"
                     jiyi:borderWidth="2dp"
-                    android:src="@mipmap/mhead"
+                    android:src="@mipmap/user_big_icon"
                     />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="5dp">
-                    <View
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:background="@mipmap/person_center_eidt"/>
+                    android:layout_marginTop="10dp">
+                    <ImageView
+                        android:id="@+id/edit_sex"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/person_center_eidt"/>
                     <TextView
+                        android:id="@+id/top_tv_username"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/mwhite"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:text="@string/personcenter_edit"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/halftop_motto"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,9 +69,12 @@
                         android:layout_height="8dp"
                         android:background="@mipmap/ahead_yhao"/>
                     <TextView
+                        android:id="@+id/et_motto"
                         android:layout_marginLeft="3dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLength="18"
+                        android:ellipsize="end"
                         android:text="@string/personcenter_edit_motto"
                         android:textSize="16sp"
                         android:textColor="@color/mwhite"/>
@@ -78,14 +88,16 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/ll_personcenter_login_reg"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@drawable/login_reg_bg_press"
             android:orientation="horizontal">
             <RelativeLayout
+                android:id="@+id/rl_person_center_login"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/login_reg_bg_press"
                 android:layout_weight="1">
                 <TextView
                     android:layout_centerInParent="true"
@@ -102,8 +114,10 @@
                 android:layout_marginBottom="3dp"
                 android:background="@color/mwhite"/>
             <RelativeLayout
+                android:id="@+id/rl_person_center_reg"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/login_reg_bg_press"
                 android:layout_weight="1">
                 <TextView
                     android:layout_centerInParent="true"

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/jokeitem_bg_on"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp">
+        <EditText
+            android:id="@+id/huifu_et_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/jokedetail_edittext"
+            android:background="@drawable/small_edittext_background"/>
+        <Button
+            android:id="@+id/huifu_bt_send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:background="@mipmap/comment_send"
+            />
+    </LinearLayout>
+
+</LinearLayout>

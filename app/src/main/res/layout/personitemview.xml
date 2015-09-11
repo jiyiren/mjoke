@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rippleview="http://schemas.android.com/apk/res-auto"
     xmlns:jiyi="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,12 +24,17 @@
             jiyi:borderRadius="4dp"
             android:src="@mipmap/person_center_article" />
 
-        <RelativeLayout
+        <com.andexert.library.RippleView
+            android:id="@+id/person_rippleview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" 
+            android:layout_weight="1"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/personitem_click">
+            android:background="@drawable/personitem_click"
+            rippleview:rv_color="@color/setting_item_pressed_hover"
+            rippleview:rv_framerate="20"
+            rippleview:rv_alpha="160"
+            rippleview:rv_rippleDuration="300">
 
             <TextView
                 android:id="@+id/personitem_tv_info"
@@ -46,11 +52,11 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@mipmap/p_row" />
-        </RelativeLayout>
+        </com.andexert.library.RippleView>
     </LinearLayout>
-    <TextView 
+    <TextView
         android:id="@+id/personitem_long"
-        android:layout_marginLeft="75dp"
+        android:layout_marginLeft="70dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@mipmap/long_term"/>

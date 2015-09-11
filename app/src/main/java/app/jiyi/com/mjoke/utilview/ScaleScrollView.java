@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,18 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import app.jiyi.com.mjoke.R;
+import app.jiyi.com.mjoke.utiltool.DensityUtil;
+
 /**
  * Created by JIYI on 2015/8/10.
  */
 public class ScaleScrollView extends ScrollView{
-    private  boolean isonce;
+    private  boolean isonce,isgone;
     private LinearLayout mParentView;
     private ViewGroup mTopView;
     private ViewGroup mDownView;
+    private ViewGroup mLoginReg;
 
     private int mScreenHeight;
     private int mTopViewHeight;
@@ -28,14 +31,16 @@ public class ScaleScrollView extends ScrollView{
 
     private ObjectAnimator oa;
 
+    private Context context;
     public ScaleScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context=context;
         this.setOverScrollMode(View.OVER_SCROLL_NEVER);
         WindowManager wm= (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics metrics=new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(metrics);
         mScreenHeight=metrics.heightPixels;
-        mTopViewHeight=mScreenHeight/2-(int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, context.getResources().getDisplayMetrics());
+        mTopViewHeight=mScreenHeight/2- DensityUtil.dp2px(context,90);
 
     }
 
@@ -45,9 +50,41 @@ public class ScaleScrollView extends ScrollView{
         if(!isonce) {
             mParentView = (LinearLayout) this.getChildAt(0);
             mTopView = (ViewGroup) mParentView.getChildAt(0);
+            mLoginReg= (ViewGroup) mTopView.findViewById(R.id.ll_personcenter_login_reg);
+            if(isgone){
+                mLoginReg.setVisibility(GONE);
+            }else{
+                mLoginReg.setVisibility(VISIBLE);
+            }
             mDownView= (ViewGroup) mParentView.getChildAt(1);
             mTopView.getLayoutParams().height = mTopViewHeight;
             isonce=true;
+        }
+    }
+
+    //不显示登录注册按钮
+    public void setInVisibleLogReg(){
+        if(mLoginReg!=null){
+            mLoginReg.setVisibility(GONE);
+        }else {
+        isgone=true;
+        }
+        mTopViewHeight = mScreenHeight / 2 - DensityUtil.dp2px(context, 120);
+        if(mTopView!=null) {
+            mTopView.getLayoutParams().height=mTopViewHeight;
+        }
+    }
+
+    //显示登录注册按钮
+    public void setVisibleLogReg(){
+        if(mLoginReg!=null){
+            mLoginReg.setVisibility(VISIBLE);
+        }else {
+        isgone=false;
+        }
+        mTopViewHeight=mScreenHeight/2-DensityUtil.dp2px(context,90);
+        if(mTopView!=null) {
+            mTopView.getLayoutParams().height=mTopViewHeight;
         }
     }
 

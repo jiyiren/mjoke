@@ -92,7 +92,7 @@
         <ImageView
             android:layout_width="@dimen/popmenu_ico"
             android:layout_height="@dimen/popmenu_ico"
-            android:src="@mipmap/popmenu_search"/>
+            android:src="@mipmap/pup_download"/>
         <TextView
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/popmenu_tip"

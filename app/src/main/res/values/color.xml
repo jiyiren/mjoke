@@ -5,6 +5,7 @@
     <color name="mwhite">#ffffff</color>
     <color name="mtransport">#00000000</color>
 
+    <color name="main_edit">#555a5851</color>
 
     <!-- 主页，人头像边框颜色-->
     <color name="header_border_color">#ffffff</color>
@@ -25,16 +26,24 @@
 
     <!--tab栏目的背景色-->
     <color name="tab_bg">#fffff9ae</color>
+    <color name="tab01_content">#ffffe257</color>
+
+    <!-- jokeitem颜色-->
+    <color name="jokeitem_bg_off">#ffffe257</color>
+    <color name="jokeitem_bg_on">#ffffe5a7</color>
+    <color name="jokeitem_detail_comment_bg">#fffff9ae</color>
 
     <!-- 标题栏文字默认颜色-->
     <color name="titilebar_text_color">#ffffff</color>
     <!-- 标题栏back图标点击下去的颜色-->
     <color name="titllebar_back_on">#45d05e</color>
+
+    <!-- 下面为个人中心登录与注册按钮颜色-->
     <color name="login_reg_bg_off">#551a1b1a</color>
     <color name="login_reg_bg_on">#55c6d0c8</color>
 
     <!-- 个人中心下部分背景-->
-    <color name="person_center_down_bg">#dbdbdb</color>
+    <color name="person_center_down_bg">#ffffff</color>
     <!-- 个人中心item点击颜色-->
     <color name="personitem_icon_border">#ffff6d6f</color>
     <color name="personitem_on_focus">#5fffcccc</color>
@@ -43,7 +52,33 @@
     <color name="person_center_logout_bt_on_color">#990000</color>
     <color name="person_center_logout_bt_off_color">#cc0000</color>
 
+    <color name="long_term">#88bdbdbd</color>
+
+    <color name="login_bt_bg_on">#ffff9d5b</color>
+    <color name="login_bt_bg_off">#ff6600</color>
+
+    <color name="editinfo_photo_broder">#000000</color>
+
+    <!--分享界面提示语的颜色-->
+    <color name="public_text_color">#B0B0B0</color>
+    <!--tag标签点击的颜色-->
+    <color name="public_tag_normal">#a6a6a6</color>
+    <color name="public_tag_pressed">#51b476</color>
+    <color name="public_edittext_corner">#a6a6a6</color>
+
+    <color name="settting_bg">#ffffff</color>
+    <color name="setting_item_pressed">#55778899</color>
+    <color name="setting_item_pressed_hover">#778899</color>
 
 
-
+    <!-- 主题选择-->
+    <color name="color01">#ffad5fdd</color>
+    <color name="color02">#ffdd5da4</color>
+    <color name="color03">#ffdd5964</color>
+    <color name="color04">#ffdd9d55</color>
+    <color name="color05">#ff4c71dd</color>
+    <color name="color06">#ff9e49dd</color>
+    <color name="color07">#ff45ddbd</color>
+    <color name="color08">#ffdd4543</color>
+    <color name="color09">#56dd6f</color>
 </resources>

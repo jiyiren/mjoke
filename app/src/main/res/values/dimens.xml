@@ -8,4 +8,10 @@
     <dimen name="popmenu_padding_right">13dp</dimen>
     <dimen name="popmenu_ico">23dp</dimen>
     <dimen name="popmenu_tip">17sp</dimen>
+
+    <dimen name="share_img_height">50dp</dimen>
+    <dimen name="share_img_width">50dp</dimen>
+
+    <dimen name="theme_color_height">40dp</dimen>
+    <dimen name="theme_color_width">40dp</dimen>
 </resources>

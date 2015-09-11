@@ -1,15 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffe257"
+    android:orientation="vertical"
     tools:context="com.jiyiren.jiyi.myapp4.tabfragment.Tab01Fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="20sp"
-        android:text="@string/mainview_tab_01" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:textSize="20sp"-->
+        <!--android:text="@string/mainview_tab_01" />-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/tab01_swipe_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <app.jiyi.com.mjoke.utilview.LoadMoreListView
+            android:id="@+id/tab01_lv"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:divider="@color/mtransport"
+            android:dividerHeight="10dp"
+            android:clipToPadding="false"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></app.jiyi.com.mjoke.utilview.LoadMoreListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+</LinearLayout>

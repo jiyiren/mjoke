@@ -9,13 +9,18 @@
     <string name="popmenu_set">我的设置</string>
     <string name="popmenu_refresh">刷新内容</string>
     <string name="popmenu_edit">发表文章</string>
-    <string name="popmenu_search">搜索内容</string>
+    <string name="popmenu_search">我的下载</string>
     <string name="popmenu_email">反馈问题</string>
 
     <string name="mainview_tab_01">最新推荐</string>
     <string name="mainview_tab_02">最热分享</string>
     <string name="mainview_tab_03">搞笑段子</string>
     <string name="mainview_tab_04">清纯妹子</string>
+
+    <string name="jokedetail">详情</string>
+    <string name="jokedetail_comment_sofa">沙发只为您留着~~</string>
+    <string name="jokedetail_edittext">说点什么吧..</string>
+
 
     <string name="title_activity_aty_person_center">AtyPersonCenter</string>
     <string name="personcenter">个人中心</string>
@@ -28,19 +33,117 @@
     <string name="personcenter_down_article">我的文章</string>
     <string name="personcenter_down_hide">我的收藏</string>
     <string name="personcenter_down_share">我的分享</string>
+    <string name="personcenter_down_download">我的下载</string>
     <string name="personcenter_down_look">我的浏览</string>
     <string name="personcenter_down_comment">我的评论</string>
 
     <string name="personcenter_find">我的发现</string>
     <string name="personcenter_publish">发表文章</string>
     <string name="personcenter_search">搜索文章</string>
+    <string name="personcenter_fankui">问题反馈</string>
     <string name="personcenter_set">设置</string>
     <string name="personcenter_edit_info">编辑信息</string>
     <string name="personcenter_logout">退出登录</string>
+
+    <string name="login_title">用户登录</string>
+    <string name="register_title">用户注册</string>
+    <string name="userename">输入用户名</string>
+    <string name="userepwd">输入密码</string>
+
+    <string name="register_hint_username">用户名最多15个字符</string>
+    <string name="register_hint_pwd">密码不少于6个字符</string>
+
+    <string name="fail_to_net">网络连接错误</string>
+    <string name="not_empty_username_pwd">用户名或者密码不能为空</string>
+    <string name="not_blank_username">用户名不能有空格</string>
+    <string name="pwd_not_less_six">密码长度不小于6</string>
+
+    <string name="editinfo_title_name">编辑信息</string>
+    <string name="editinfo_nichen">昵称：</string>
+    <string name="editinfo_nichen_hint">输入昵称</string>
+    <string name="editinfo_sex">性别：</string>
+    <string name="editinfo_sex_man">男</string>
+    <string name="editinfo_sex_female">女</string>
+    <string name="editinfo_favourit">写一句你最喜欢的话:</string>
+    <string name="editinfo_favourit_hint">经典语句能体现一个人的魅力</string>
+
+    <string name="editinfo_save">保存编辑</string>
+    <string name="editinfo_cancel_save">取消编辑</string>
+
+
+
+    <string name="item_username">只需五个字</string>
+    <string name="item_time">发表于:2015-08-19 15:09</string>
+
+    <string name="item_content">一同事上午还在上班，下午就成了无业游民，只因为中午几个讨论老板两有多风骚（老板娘今年36），同事大喊一声“我艹，我要老板娘”，刚好老板娘下来了路过听见了。哎，不说了，这货来拿工资了。</string>
+
+    <string name="booter_loadmore">正在加载</string>
+    <string name="niming">匿名者</string>
+
 
 
 
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_aty_test">AtyTest</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_edit_info">EditInfoActivity</string>
+
+    <string name="title_activity_publish">PublishActivity</string>
+    <string name="publish_title_name">分享趣事</string>
+
+    <string name="publish_et_hint">不少于5个字</string>
+    <string name="publish_tv_hint">选择发表图片(文字和图片更配哦~~)</string>
+    <string name="publish_tv_beforepub">发表前打个标签吧!</string>
+    <string name="publish_tag_01">搞笑段子</string>
+    <string name="publish_tag_02">清纯妹子</string>
+    <string name="publish_tag_03">其他</string>
+    <string name="publish_share_motto">老子常说:分享快乐也是一种美德~~</string>
+    <string name="publish_bt_share">分享</string>
+
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="setting">设置</string>
+    <string name="setting_person_set">个人设置</string>
+        <string name="setting_personal_center">个人中心</string>
+        <string name="setting_personal_set_edit">信息编辑</string>
+
+    <string name="setting_system_set">系统设置</string>
+        <string name="setting_system_set_changetheme">更换主题</string>
+            <string name="setting_sys_choosetheme">选择主题</string>
+        <string name="setting_system_set_font">字体设置</string>
+
+    <string name="setting_other_set">其他设置</string>
+    <string name="setting_other_set_probleam">反馈问题</string>
+    <string name="setting_other_set_reflash">检查更新</string>
+    <string name="setting_other_set_law">法律申明</string>
+    <string name="setting_other_set_about">关于我们</string>
+    <string name="title_activity_joke_detail">JokeDetailActivity</string>
+    <string name="title_activity_collect">CollectActivity</string>
+    <string name="title_activity_list_base">ListBaseActivity</string>
+    <string name="title_activity_look">LookActivity</string>
+    <string name="title_activity_send_ques">SendQuesActivity</string>
+    <string name="ques_title">问题反馈</string>
+    <string name="ques_shuoming">我们在收集反馈信息的时候不会携带任何用户隐私信息</string>
+    <string name="ques_tijiao">提交</string>
+    <string name="qeus_content_hint">输入反馈内容</string>
+    <string name="qeus_email_hint">输入联系邮件</string>
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="title_activity_share_dialog">ShareDialogActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="about_title">关于</string>
+    <string name="about_share">分享应用</string>
+    <string name="about_law">法律申明</string>
+    <string name="about_contact">联系我们</string>
+        <string name="about_contact_blog">博客地址:</string>
+            <string name="about_contact_blog_value">http://jiyiren.github.io</string>
+        <string name="about_contact_email">联系邮箱:</string>
+            <string name="about_contact_email_value">jiyi1459050189@163.com</string>
+    <string name="title_activity_law">LawActivity</string>
+    <string name="lawact_one">1、本应用的部分内容来自其他媒体转载，我们保证内容来源的可靠性、真实性和准确性，版权归出处所有。个人发布的作品，版权归属个人所有。</string>
+    <string name="lawact_two">2、作为用户在发表文章和评论的时候，请严格遵守相关法律规定，不得发表危害政府，社会，色情，暴力等内容，如果发现，本应用不承担任何责任。我们将配合相关部门进行责任追究。</string>
+
+    <string name="sex_choose_tip_theme">主题颜色选择可以到设置里设置</string>
+    <string name="title_activity_down_load">DownLoadActivity</string>
+    <string name="person_center_download">我的下载</string>
+    <string name="title_activity_down_img_see">DownImgSeeActivity</string>
 
 </resources>

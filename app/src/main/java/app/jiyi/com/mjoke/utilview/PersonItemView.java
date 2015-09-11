@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
+
 import app.jiyi.com.mjoke.R;
 
 
-public class PersonItemView extends LinearLayout {
+public class PersonItemView extends LinearLayout implements RippleView.OnRippleCompleteListener{
 
 	private Drawable msrc;
 	private String content;
@@ -23,6 +25,7 @@ public class PersonItemView extends LinearLayout {
 	
 	private ImageView iv;
 	private TextView tv,tv_long;
+	private RippleView rippleView;
 	public PersonItemView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -44,7 +47,8 @@ public class PersonItemView extends LinearLayout {
 		tv=(TextView) v.findViewById(R.id.personitem_tv_info);
 		iv.setImageDrawable(msrc);
 		tv.setText(content);
-		
+		rippleView= (RippleView) v.findViewById(R.id.person_rippleview);
+		rippleView.setOnRippleCompleteListener(this);
 		if(value_line==0){
 			tv_long=(TextView) v.findViewById(R.id.personitem_long);
 			LayoutParams lp=new LayoutParams(LayoutParams.MATCH_PARENT,
@@ -66,8 +70,20 @@ public class PersonItemView extends LinearLayout {
 		tv.setText(con);
 	}
 
-	
 
-	
+	private RippleViewComplete rippleViewComplete;
+	@Override
+	public void onComplete(RippleView rippleView) {
+		if(rippleViewComplete!=null){
+			rippleViewComplete.onRvComplete(this);
+		}
+	}
 
+	public void setOnRippleViewComplete(RippleViewComplete rippleViewComplete){
+		this.rippleViewComplete=rippleViewComplete;
+	}
+
+	public interface RippleViewComplete{
+		public void onRvComplete(PersonItemView personItemView);
+	}
 }

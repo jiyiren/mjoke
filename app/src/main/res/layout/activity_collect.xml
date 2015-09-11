@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="app.jiyi.com.mjoke.aty.CollectActivity">
+
+    <include layout="@layout/toptitlebar"/>
+    <app.jiyi.com.mjoke.utilview.LoadMoreListView
+        android:id="@+id/collect_listview"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:divider="@color/mtransport"
+        android:dividerHeight="10dp"
+        android:clipToPadding="false"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </app.jiyi.com.mjoke.utilview.LoadMoreListView>
+
+</LinearLayout>

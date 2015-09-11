@@ -13,7 +13,12 @@
         android:textColor="#000000"
         android:text="@string/personcenter_foot"
         android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/long_term"/>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_mypublish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
@@ -21,13 +26,15 @@
         jiyi:text="@string/personcenter_down_article"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
-        jiyi:msrc="@mipmap/person_center_share"
-        jiyi:text="@string/personcenter_down_share"
+        jiyi:msrc="@mipmap/user_center_download"
+        jiyi:text="@string/personcenter_down_download"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_collect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
@@ -35,6 +42,7 @@
         jiyi:text="@string/personcenter_down_hide"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_look"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
@@ -42,6 +50,7 @@
         jiyi:text="@string/personcenter_down_look"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="full"
@@ -57,7 +66,12 @@
         android:textColor="#000000"
         android:text="@string/personcenter_find"
         android:textSize="18sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/long_term"/>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_publish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
@@ -65,13 +79,15 @@
         jiyi:text="@string/personcenter_publish"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="half"
-        jiyi:msrc="@mipmap/person_center_search"
-        jiyi:text="@string/personcenter_search"
+        jiyi:msrc="@mipmap/share_other_norm"
+        jiyi:text="@string/personcenter_fankui"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <app.jiyi.com.mjoke.utilview.PersonItemView
+        android:id="@+id/center_down_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         jiyi:showline="full"
@@ -79,6 +95,7 @@
         jiyi:text="@string/personcenter_set"
         ></app.jiyi.com.mjoke.utilview.PersonItemView>
     <Button
+        android:id="@+id/pc_bt_edit_info"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
@@ -92,6 +109,7 @@
         android:textStyle="bold" >
     </Button>
     <Button
+        android:id="@+id/pc_bt_exit_login"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"

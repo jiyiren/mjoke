@@ -1,0 +1,13 @@
+<FrameLayout
+    android:id="@+id/downsee_fl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7111a23"
+    >
+
+    <app.jiyi.com.mjoke.utilview.photoview.PhotoView
+        android:id="@+id/downsee_iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

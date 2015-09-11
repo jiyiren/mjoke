@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jiyi="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <app.jiyi.com.mjoke.utilview.CircleImageView
+        android:id="@+id/item_com_header"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        jiyi:borderWidth="1dp"
+        jiyi:borderColor="@color/header_border_color"
+        jiyi:hoverColor="@color/header_press"
+        android:src="@mipmap/user_big_icon"/>
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/item_com_name"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="只需五个字"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/item_com_lou"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="1楼"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/item_com_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/mblack"
+            android:text="@string/item_content"/>
+        <TextView
+            android:layout_gravity="bottom"
+            android:id="@+id/item_com_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="评论于:2015-09-08 19:15"/>
+    </LinearLayout>
+</LinearLayout>

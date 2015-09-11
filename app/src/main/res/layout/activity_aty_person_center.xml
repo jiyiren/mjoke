@@ -5,9 +5,9 @@
     >
 
     <include
-        android:id="@+id/personcenter_title"
         layout="@layout/toptitlebar"/>
     <app.jiyi.com.mjoke.utilview.ScaleScrollView
+        android:id="@+id/personcenter_scalesv"
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

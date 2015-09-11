@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="app.jiyi.com.mjoke.aty.SendQuesActivity">
+
+    <include layout="@layout/toptitlebar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="20dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/sendques_content"
+                android:paddingLeft="9dp"
+                android:paddingTop="7dp"
+                android:layout_marginTop="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:inputType="textMultiLine"
+                android:background="@drawable/share_et"
+                android:textSize="14sp"
+                android:textColorHint="@color/public_text_color"
+                android:maxLines="13"
+                android:gravity="left|top"
+                android:hint="@string/qeus_content_hint"/>
+            <EditText
+                android:id="@+id/sendques_email"
+                android:textSize="16sp"
+                android:hint="@string/qeus_email_hint"
+                android:paddingLeft="4dp"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/mwhite"/>
+            <TextView
+                android:layout_marginTop="34dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/ques_shuoming"/>
+
+            <Button
+                android:id="@+id/sendques_tijiao"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/editinfo_bt"
+                android:gravity="center"
+                android:text="@string/ques_tijiao"
+                android:layout_marginBottom="200dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<FrameLayout
+    android:id="@+id/simple_fl"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7111a23"
+    >
+
+    <app.jiyi.com.mjoke.utilview.photoview.PhotoView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/bt_download"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@mipmap/download"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="bottom|right"/>
+</FrameLayout>

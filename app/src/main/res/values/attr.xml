@@ -21,4 +21,23 @@
         <attr name="hoverColor" format="reference|color">
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="RippleView">
+        <attr name="rippleColor" format="color" />
+        <attr name="alphaFactor" format="float" />
+        <attr name="hover" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SettingItemView">
+        <attr name="st_lefttext" format="reference|string"></attr>
+        <attr name="st_type">
+            <enum name="arrow" value="0"></enum>
+            <enum name="text" value="1"></enum>
+        </attr>
+        <attr name="st_righttext" format="reference|string"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="StaggeredGridView">
+        <attr name="drawSelectorOnTop" format="boolean" />
+        <attr name="numColumns" format="integer" />
+    </declare-styleable>
 </resources>

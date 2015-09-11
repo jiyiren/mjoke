@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jiyi="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/atymain_ll"
     android:layout_width="match_parent"
@@ -6,14 +7,23 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/main_title"
         layout="@layout/tab_title01"/>
     <include layout="@layout/tab_title02"/>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/tab_viewpager"
+    <FrameLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        />
+        android:layout_height="0dp">
+        <ListView
+            android:id="@+id/main_lv"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ListView>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tab_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </FrameLayout>
+
 
 </LinearLayout>

@@ -29,20 +29,24 @@ public class NetConnection {
                         paramStr.append("&");
                     }
                 }
-                MyLog.i("jiyi","paramStr:"+paramStr.toString());//日志
+                MyLog.i("jiyiren","paramStr:"+paramStr.toString());//日志
 
                 try {
                     URLConnection connection=null;
                     switch (httpMethod){
                         case GET:
                             connection=new URL(url+"?"+paramStr).openConnection();
+//                            connection.connect();
                             break;
                         case POST:
                             connection=new URL(url).openConnection();
                             connection.setDoOutput(true);
+                            connection.setConnectTimeout(5000);
+//                            connection.setDoInput(true);
                             BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(),"utf-8"));
                             bw.write(paramStr.toString());
-                            connection.setConnectTimeout(5000);
+                            bw.flush();
+//                            connection.connect();
                             break;
                     }
                     BufferedReader br=new BufferedReader(new InputStreamReader(connection.getInputStream(),"utf-8"));
@@ -51,7 +55,7 @@ public class NetConnection {
                     while ((line=br.readLine())!=null){
                         resultBuffer.append(line);
                     }
-                    MyLog.i("jiyi","resultStr:"+resultBuffer.toString());//日志
+                    MyLog.i("jiyiren","resultStr:"+resultBuffer.toString());//日志
                     return resultBuffer.toString();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,6 +84,7 @@ public class NetConnection {
     public static interface SuccessCallback{
         void onSuccess(String result);
     }
+
     public static interface FailCallback{
         void onFail();
     }

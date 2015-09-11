@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:jiyi="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_title01"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/maincolor">
@@ -11,6 +12,7 @@
         >
 
         <app.jiyi.com.mjoke.utilview.CircleImageView
+            android:id="@+id/mainview_userhead"
             android:layout_alignParentLeft="true"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -20,7 +22,7 @@
             jiyi:borderWidth="1dp"
             jiyi:borderColor="@color/header_border_color"
             jiyi:hoverColor="@color/header_press"
-            android:src="@mipmap/mhead"/>
+            android:src="@mipmap/user_big_icon"/>
         <LinearLayout
             android:layout_alignParentRight="true"
             android:layout_width="100dp"

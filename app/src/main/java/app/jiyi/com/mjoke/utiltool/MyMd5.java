@@ -1,5 +1,6 @@
 package app.jiyi.com.mjoke.utiltool;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -11,8 +12,8 @@ public class MyMd5 {
     public static String MD5(String sourceStr) {
         String result = "";
         try {
-            MessageDigest md = MessageDigest.getInstance("MyMd5");
-            md.update(sourceStr.getBytes());
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(sourceStr.getBytes("UTF-8"));
             byte b[] = md.digest();
             int i;
             StringBuffer buf = new StringBuffer("");
@@ -29,6 +30,8 @@ public class MyMd5 {
             //System.out.println("MyMd5(" + sourceStr + ",16) = " + buf.toString().substring(8, 24));
         } catch (NoSuchAlgorithmException e) {
             System.out.println(e);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
         return result;
     }
