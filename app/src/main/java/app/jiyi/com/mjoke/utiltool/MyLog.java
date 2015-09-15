@@ -24,7 +24,7 @@ public class MyLog {
 
     public static final String CACHE_DIR_NAME = "dPhoneLog";
 
-    public static boolean isDebugModel = false;// 是否输出日志
+    public static boolean isDebugModel = true;// 是否输出日志
     public static boolean isSaveDebugInfo = false;// 是否保存调试日志
     public static boolean isSaveCrashInfo = false;// 是否保存报错日志
 

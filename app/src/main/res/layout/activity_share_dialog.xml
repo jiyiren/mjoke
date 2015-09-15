@@ -9,6 +9,7 @@
     tools:context="app.jiyi.com.mjoke.aty.ShareDialogActivity">
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_marginTop="10dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"

@@ -8,10 +8,12 @@ public class MyConfig {
     public static final String DOWNLOAD_URL="http://jiyiren.github.io";//关于界面的分享应用用到下载app的连接
     public static final String CURRENT_BANBEN="当前版本1.0.0";//当前版本号
     public static final int CURRENT_BANBEN_NUM=1;//当前版本,可以用以后的版本大于此，升级
+
+    public static final String SHARE_WEIXIN_TEXT_HOUZHUI="(--来自mjoke)";
     //请求的url地址
-//    public static final String SERVER_IP="http://10.60.52.173:8088";//服务器地址
-    public static final String SERVER_IP="http://192.168.1.100:8088";//服务器地址
-    public static final String BASE_PROJECT=SERVER_IP+"/joke";//项目基地址
+//    public static final String SERVER_IP="http://10.60.41.171:8088";//服务器地址
+//    public static final String BASE_PROJECT=SERVER_IP+"/joke";//项目基地址
+    public static final String BASE_PROJECT="http://mjoke.cn-hangzhou.aliapp.com";//项目基地址
 
     public static final String BASE_SERVLET=BASE_PROJECT+"/servlet";//Servlet基地址
     public static final String BASE_IMG=BASE_PROJECT+"/images";//图片文件保存的基地址
@@ -36,6 +38,7 @@ public class MyConfig {
     public static final String URL_SENDCOMMENT=BASE_SERVLET+"/InsertComment";//插入评论
     public static final String URL_UPDATE=BASE_SERVLET+"/GetTheLastBanben";//更新版本
     public static final String URL_ZAN=BASE_SERVLET+"/Zan";//赞
+    public static final String BASE_SHARE_TO_OTHER=BASE_PROJECT+"/joke.jsp?1459050189joke_id=";//分享的界面
 
     //请求参数键
     public static final String KEY_USERNAME="username";

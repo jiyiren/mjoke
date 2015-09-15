@@ -1,6 +1,5 @@
 package app.jiyi.com.mjoke.fragment;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -39,7 +38,6 @@ public class Tab04Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     private ArrayList<SingleJoke> mTempDatas;
     private MyApdater mAdapter;
-    private ProgressDialog dialog;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mview=LayoutInflater.from(getActivity()).inflate(R.layout.fragment_tab04,null);
         mapp=App.getAppInstance();
@@ -48,9 +46,6 @@ public class Tab04Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     private void initView() {
-        dialog = new ProgressDialog(getActivity());
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(false);
         swipeRefreshLayout= (SwipeRefreshLayout) mview.findViewById(R.id.tab04_swipe_ly);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light,
                 android.R.color.holo_red_light, android.R.color.holo_orange_light,
@@ -64,7 +59,7 @@ public class Tab04Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
         mAdapter = new MyApdater(getActivity(), mListDatas, R.layout.item_joke);
         mListView.setAdapter(mAdapter);
         if(isonce) {
-            dialog.show();
+            swipeRefreshLayout.setRefreshing(true);
             refresh();
             isonce=false;
         }
@@ -79,8 +74,8 @@ public class Tab04Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            if(dialog.isShowing()){
-                dialog.dismiss();
+            if(swipeRefreshLayout.isRefreshing()){
+                swipeRefreshLayout.setRefreshing(false);
             }
             switch (msg.what){
                 case GETJOKE_SUCCESS:

@@ -1,6 +1,5 @@
 package app.jiyi.com.mjoke.fragment;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,7 +39,7 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     private ArrayList<SingleJoke> mTempDatas;
     private MyApdater mAdapter;
-    private ProgressDialog dialog;
+//    private ProgressDialog dialog;
     private String userid;
     @Nullable
     @Override
@@ -53,9 +52,9 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
     private void initView() {
-        dialog = new ProgressDialog(getActivity());
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setCancelable(false);
+//        dialog = new ProgressDialog(getActivity());
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.setCancelable(false);
         swipeRefreshLayout= (SwipeRefreshLayout) mview.findViewById(R.id.tab01_swipe_ly);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light,
                 android.R.color.holo_red_light, android.R.color.holo_orange_light,
@@ -69,7 +68,8 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
         mAdapter = new MyApdater(getActivity(), mListDatas, R.layout.item_joke);
         mListView.setAdapter(mAdapter);
         if(isonce) {
-            dialog.show();
+//            dialog.show();
+            swipeRefreshLayout.setRefreshing(true);
             refresh();
             isonce=false;
         }
@@ -84,8 +84,8 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            if(dialog.isShowing()){
-                dialog.dismiss();
+            if(swipeRefreshLayout.isRefreshing()){
+                swipeRefreshLayout.setRefreshing(false);
             }
             switch (msg.what){
                 case GETJOKE_SUCCESS:

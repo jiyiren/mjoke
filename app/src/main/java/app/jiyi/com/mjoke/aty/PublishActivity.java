@@ -1,5 +1,6 @@
 package app.jiyi.com.mjoke.aty;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +23,8 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -51,6 +54,7 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
     private String mContent;
     private String userid="0";
     private FrameLayout toptilebar;
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,9 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void initView() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
         toptilebar= (FrameLayout) findViewById(R.id.toptitlebar);
         findViewById(R.id.rl_toptitlebar_back).setOnClickListener(this);//标题后退按钮
         tv_title= (TextView) findViewById(R.id.tv_toptitlebar_name);//标题的title文字
@@ -171,6 +178,7 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
             return;
         }
 //        ShowToast.show(PublishActivity.this, mContent);
+        dialog.show();
         if(ishaveimg) {
             new Thread(uploadImageRunnable).start();
         }else{
@@ -290,10 +298,31 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
 //        Bitmap bitmap=MyUtils.getimage(imgdir,800f,400f);
         Bitmap bitmap=MyUtils.getimage(imgdir,800f,400f);
         Save_path=Environment.getExternalStorageDirectory()+"/"+MyConfig.BASE_DIR_NAME+"/photopick.jpg";
-        MyUtils.SavePhoto(bitmap,Save_path );
+       SavePhoto(bitmap,Save_path );
         iv_pic_add.setImageBitmap(bitmap);
         iv_pic_cancle.setVisibility(View.VISIBLE);
         ishaveimg=true;
+    }
+
+
+    //将bitmap保存到制定路径
+    public static void SavePhoto(Bitmap bitmap,String path){
+        FileOutputStream fos=null;
+        try {
+            File file=new File(path);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            fos=new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,70, fos);//100无压缩
+            //保存为png格式，图片压缩质量为75，对于png来说这个参数会被忽略
+            //jpg则使用CompressFormat.JPEG
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     //线程设置
@@ -416,6 +445,9 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
     Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
             if(!Save_path.equals("")&&Save_path!=null){
                 File f=new File(Save_path);
                 if(f.exists()) {
