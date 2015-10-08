@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,10 @@ import app.jiyi.com.mjoke.utiltool.MyLog;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 import app.jiyi.com.mjoke.utilview.staggergridview.StaggeredGridView;
 
+/**
+ * 个人中心点击我的下载，显示该界面
+ * AtyPersonCenter---->this
+ */
 public class DownLoadActivity extends BaseActivity implements View.OnClickListener{
 
     private TextView tv_title;
@@ -156,5 +162,12 @@ public class DownLoadActivity extends BaseActivity implements View.OnClickListen
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

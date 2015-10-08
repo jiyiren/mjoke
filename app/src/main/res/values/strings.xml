@@ -145,5 +145,6 @@
     <string name="title_activity_down_load">DownLoadActivity</string>
     <string name="person_center_download">我的下载</string>
     <string name="title_activity_down_img_see">DownImgSeeActivity</string>
+    <string name="title_activity_copy_dialog">CopyDialogActivity</string>
 
 </resources>

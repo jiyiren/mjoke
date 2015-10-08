@@ -13,10 +13,13 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.MyConfig;
 import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.net.LoginNet;
+import app.jiyi.com.mjoke.utiltool.Base64Util;
 import app.jiyi.com.mjoke.utiltool.MyMd5;
 import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
@@ -110,7 +113,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         String userpwd=et_pwd.getText().toString();
         if(!TextUtils.isEmpty(username)&&!TextUtils.isEmpty(userpwd)){
 
-            new LoginNet(loginType, username, MyMd5.MD5(userpwd), new LoginNet.SuccessLoginCallback() {
+            new LoginNet(loginType, Base64Util.encode(username.getBytes()), MyMd5.MD5(userpwd), new LoginNet.SuccessLoginCallback() {
                 @Override
                 public void onSuccess(String result) {
 //                    ShowToast.show(LoginActivity.this,result);
@@ -125,7 +128,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                             }else{
                                 mapp.setUserSex(MyConfig.VALUE_SEX_MAN);
                             }
-                            String motto=MyUtils.getGson(result, MyConfig.KEY_MOTTO);
+                            String motto=new String(Base64Util.decode(MyUtils.getGson(result, MyConfig.KEY_MOTTO)));
                             if(!motto.equals("")) {
                                 mapp.setUserMotto(motto);
                             }
@@ -154,6 +157,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         if(toptitlebar_right!=null){
             toptitlebar_right.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }
 

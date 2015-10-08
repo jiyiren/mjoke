@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.R;
 
@@ -46,5 +48,12 @@ public class LawActivity extends BaseActivity {
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

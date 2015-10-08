@@ -11,13 +11,16 @@ public class MyConfig {
 
     public static final String SHARE_WEIXIN_TEXT_HOUZHUI="(--来自mjoke)";
     //请求的url地址
-//    public static final String SERVER_IP="http://10.60.41.171:8088";//服务器地址
+//    public static final String SERVER_IP="http://10.60.47.165:8088";//服务器地址
 //    public static final String BASE_PROJECT=SERVER_IP+"/joke";//项目基地址
-    public static final String BASE_PROJECT="http://mjoke.cn-hangzhou.aliapp.com";//项目基地址
+//    public static final String BASE_PROJECT="http://mjoke.cn-hangzhou.aliapp.com";//项目基地址阿里
+    public static final String BASE_PROJECT="http://mjokeapp.duapp.com";//项目基地址
 
     public static final String BASE_SERVLET=BASE_PROJECT+"/servlet";//Servlet基地址
-    public static final String BASE_IMG=BASE_PROJECT+"/images";//图片文件保存的基地址
-    public static final String BASE_IMG_CONTENT=BASE_PROJECT+"/imgcontent";//内容图片文件保存的基地址
+    //public static final String BASE_IMG=BASE_PROJECT+"/images";//头像保存的基地址
+    public static final String BASE_IMG="http://mjoke.oss-cn-shanghai.aliyuncs.com";//头像保存的基地址
+//    public static final String BASE_IMG_CONTENT=BASE_PROJECT+"/imgcontent";//内容图片文件保存的基地址
+    public static final String BASE_IMG_CONTENT="http://mjoke.oss-cn-shanghai.aliyuncs.com";//内容图片文件保存的基地址
 
     /*Servlet*/
     public static final String URL_REGISTER=BASE_SERVLET+"/UserRegister";
@@ -38,6 +41,7 @@ public class MyConfig {
     public static final String URL_SENDCOMMENT=BASE_SERVLET+"/InsertComment";//插入评论
     public static final String URL_UPDATE=BASE_SERVLET+"/GetTheLastBanben";//更新版本
     public static final String URL_ZAN=BASE_SERVLET+"/Zan";//赞
+    public static final String URL_JUBAO=BASE_SERVLET+"/Jubao";//
     public static final String BASE_SHARE_TO_OTHER=BASE_PROJECT+"/joke.jsp?1459050189joke_id=";//分享的界面
 
     //请求参数键
@@ -113,6 +117,7 @@ public class MyConfig {
     public static final String JOKE_SHARE="share_count";
     public static final String JOKE_COLLECT="collect_count";
     public static final String JOKE_LOOK="look_count";
+    public static final String JOKE_CONTENT_IMG="imagename";
     //本地缓存文件参数
     public static final String BASE_DIR_NAME="happyjoke";
     public static final String BASE_DIR_IMAGE_DOWNLOAD="download";

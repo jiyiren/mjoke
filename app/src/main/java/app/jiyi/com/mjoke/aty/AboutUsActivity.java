@@ -10,12 +10,18 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.MyConfig;
 import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utilview.SettingItemView;
 
+/**
+ * 这个是设置界面中关于我们的界面
+ * SettingActivity---->this
+ */
 public class AboutUsActivity extends BaseActivity implements View.OnClickListener,SettingItemView.SettingRippleViewComplete{
 
     private TextView tv_title;
@@ -96,5 +102,12 @@ public class AboutUsActivity extends BaseActivity implements View.OnClickListene
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

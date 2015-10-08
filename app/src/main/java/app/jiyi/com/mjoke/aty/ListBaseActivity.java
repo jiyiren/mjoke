@@ -13,6 +13,9 @@ import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.bean.SingleJoke;
 import app.jiyi.com.mjoke.utilview.LoadMoreListView;
 
+/**
+ * 个人中心中我的浏览和我的评论的父Activity
+ */
 public abstract class ListBaseActivity extends BaseActivity implements OnClickListener,LoadMoreListView.OnLoadMore{
 
     protected LoadMoreListView mListView;

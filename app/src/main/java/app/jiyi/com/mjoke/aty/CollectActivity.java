@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +29,10 @@ import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 import app.jiyi.com.mjoke.utilview.LoadMoreListView;
 
+/**
+ * 个人中心点击我的收藏的界面
+ * AtyPersonCenter---->this
+ */
 public class CollectActivity extends BaseActivity implements View.OnClickListener,LoadMoreListView.OnLoadMore {
 
     private TextView tv_title;
@@ -197,5 +203,12 @@ public class CollectActivity extends BaseActivity implements View.OnClickListene
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

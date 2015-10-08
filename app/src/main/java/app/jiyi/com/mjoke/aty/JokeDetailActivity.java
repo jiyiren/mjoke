@@ -1,5 +1,6 @@
 package app.jiyi.com.mjoke.aty;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -23,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,11 +41,16 @@ import app.jiyi.com.mjoke.bean.UserZanBean;
 import app.jiyi.com.mjoke.db.DBManager;
 import app.jiyi.com.mjoke.net.GetAllCommentByid;
 import app.jiyi.com.mjoke.net.SendCommentNet;
+import app.jiyi.com.mjoke.utiltool.Base64Util;
 import app.jiyi.com.mjoke.utiltool.BitmapCache;
 import app.jiyi.com.mjoke.utiltool.MyLog;
 import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 
+/**
+ * 点击joke进入此界面，joke的详细界面
+ *
+ */
 public class JokeDetailActivity extends BaseActivity implements View.OnClickListener{
 
     public static final String KEY_SINGLEJOKE="msinglejoke";
@@ -69,6 +76,7 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
     private boolean isonce=true;
 
     private FrameLayout toptilebar;
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +111,9 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
     }
 
     private void initView() {
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
         toptilebar= (FrameLayout) findViewById(R.id.toptitlebar);
         findViewById(R.id.rl_toptitlebar_back).setOnClickListener(this);
         tv_title= (TextView) findViewById(R.id.tv_toptitlebar_name);
@@ -133,6 +144,9 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
             if(rl_pg.getVisibility()==View.VISIBLE){
                 rl_pg.setVisibility(View.GONE);
             }
@@ -244,7 +258,7 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
         ImageView iv_sex= (ImageView) findViewById(R.id.item_iv_sex);//性别
         String name=singleJoke.getUsername();
         if(name!=null&&!name.equals("")) {
-            tv_name.setText(name);
+            tv_name.setText(new String(Base64Util.decode(name)));
             if(singleJoke.getSex().equals(MyConfig.VALUE_SEX_MAN)){
                 iv_sex.setImageResource(R.mipmap.user_sex_man);
             }else{
@@ -256,16 +270,18 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
         }
 
         TextView tv_time = (TextView) findViewById(R.id.item_tv_time);//时间
-        tv_time.setText(singleJoke.getCreatetime());
+        String timetme=singleJoke.getCreatetime();
+        tv_time.setText(timetme.substring(0,timetme.length()-2));
         TextView tv_content = (TextView) findViewById(R.id.item_tv_content);//内容
-        tv_content.setText(singleJoke.getContent());
+//        tv_content.setText(singleJoke.getContent());
+        tv_content.setText(singleJoke.getBase64DecodeContent());
 
         ImageView iv_content= (ImageView) findViewById(R.id.iv_item_pic);//内容图片
         if(singleJoke.getIshasing().equals("1")){
             iv_content.setVisibility(View.VISIBLE);
             ImageLoader.ImageListener mlistener=ImageLoader.getImageListener(iv_content, R.mipmap.item_default_bg,
                     R.mipmap.item_default_bg);
-            final String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getJoke_id()+".jpg";
+            final String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getImgurl()+".jpg";
             loader.get(imgurl,mlistener);
             iv_content.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -502,6 +518,9 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
             ShowToast.showFirstLogin(JokeDetailActivity.this);
             return;
         }
+
+        dialog.setMessage("正在上传评论!");
+        dialog.show();
         new SendCommentNet(singleJoke.getJoke_id(), userid, username, content, new SendCommentNet.SuccessSendCommentCallback() {
             @Override
             public void onSuccess(String result) {
@@ -538,5 +557,12 @@ public class JokeDetailActivity extends BaseActivity implements View.OnClickList
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

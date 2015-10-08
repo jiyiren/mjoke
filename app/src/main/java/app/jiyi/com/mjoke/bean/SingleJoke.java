@@ -3,6 +3,10 @@ package app.jiyi.com.mjoke.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.UnsupportedEncodingException;
+
+import app.jiyi.com.mjoke.utiltool.Base64Util;
+
 /**
  * Created by JIYI on 2015/8/27.
  */
@@ -143,6 +147,27 @@ public class SingleJoke implements Parcelable{
 
     public void setIszan(int iszan) {
         this.iszan = iszan;
+    }
+
+
+//获取解析Base64后的字符串
+    public String getBase64DecodeContent(){
+        String decoBase64str=null;
+        try {
+            decoBase64str=new String(Base64Util.decode(getContent()),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return decoBase64str;
+    }
+    public String getBase64DecodeUsername(){
+        String decoBase64str=null;
+        try {
+            decoBase64str=new String(Base64Util.decode(getUsername()),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return decoBase64str;
     }
 
     @Override

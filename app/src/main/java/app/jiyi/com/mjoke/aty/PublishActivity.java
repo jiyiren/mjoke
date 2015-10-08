@@ -19,10 +19,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.sdk.android.oss.OSSService;
+import com.alibaba.sdk.android.oss.model.OSSException;
+import com.alibaba.sdk.android.oss.storage.OSSBucket;
+import com.alibaba.sdk.android.oss.storage.OSSFile;
+import com.umeng.analytics.MobclickAgent;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,6 +57,7 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
 
     private ImageView iv_pic_add,iv_pic_cancle;
     private boolean ishaveimg=false;
+    private String imgname;
     private String tag= SingleJoke.TYPE_JOKE;//默认分类
     private String mContent;
     private String userid="0";
@@ -178,11 +186,12 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
             return;
         }
 //        ShowToast.show(PublishActivity.this, mContent);
+        dialog.setMessage("努力发表中...");
         dialog.show();
         if(ishaveimg) {
             new Thread(uploadImageRunnable).start();
         }else{
-            sendNoImagJoke(userid,tag,mContent);
+            sendNoImagJoke(userid,tag,mContent,"");
         }
     }
 
@@ -330,10 +339,36 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void run() {
             // TODO Auto-generated method stub
-            uploadFile(Save_path,MyConfig.URL_PUBLISHJOKE);
+            //uploadFile(Save_path,MyConfig.URL_PUBLISHJOKE);
+            ossuploadfile(Save_path);
         }
 
     };
+
+
+    private void ossuploadfile(String srcPath){
+        imgname=userid+tag+System.currentTimeMillis();
+        OSSService ossService=mapp.getOssService();
+        OSSBucket ossBucket=ossService.getOssBucket(App.bucketName);
+        OSSFile ossFile=mapp.getOssService().getOssFile(ossBucket,imgname+".jpg");
+        try {
+            ossFile.setUploadFilePath(srcPath,"jpg");
+            ossFile.enableUploadCheckMd5sum();
+            ossFile.upload();
+            mHandler.sendEmptyMessage(SUCCESS_UPLOAD_IMG);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(FAIL_UPLOAD_IMG);
+            return;
+        } catch (OSSException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(FAIL_UPLOAD_IMG);
+            return;
+        }
+
+
+    }
+
 
     public void uploadFile(String srcPath,String uploadurl){
         String end = "\r\n";
@@ -424,8 +459,8 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
     }
 
     //发送无图说说
-    private void sendNoImagJoke(String userid,String type,String mContent){
-        new PublicJokeNoImgNet(userid, type, mContent, new PublicJokeNoImgNet.SuccessPublicJokeNoImgCallback() {
+    private void sendNoImagJoke(String userid,String type,String mContent,String igname){
+        new PublicJokeNoImgNet(userid, type, mContent,igname, new PublicJokeNoImgNet.SuccessPublicJokeNoImgCallback() {
             @Override
             public void onSuccess(String result) {
                 if(MyUtils.getGson(result,MyConfig.KEY_RESULT).equals(MyConfig.RESULT_SUCCESS)){
@@ -442,24 +477,39 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
         });
     }
 
+    private static final int SUCCESS_UPLOAD_IMG=0x11;
+    private static final int FAIL_UPLOAD_IMG=0x12;
     Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            if(dialog.isShowing()){
-                dialog.dismiss();
-            }
-            if(!Save_path.equals("")&&Save_path!=null){
-                File f=new File(Save_path);
-                if(f.exists()) {
-                    f.delete();
-                }
-            }
+
             switch (msg.what){
                 case MyConfig.SUCCESS:
+                    if(!Save_path.equals("")&&Save_path!=null){
+                        File f=new File(Save_path);
+                        if(f.exists()) {
+                            f.delete();
+                        }
+                    }
+                    if(dialog.isShowing()){
+                        dialog.dismiss();
+                    }
                     ShowToast.show(PublishActivity.this,"发表成功！");
                     PublishActivity.this.finish();
                     break;
                 case MyConfig.FAIL:
+                    if(dialog.isShowing()){
+                        dialog.dismiss();
+                    }
+                    ShowToast.show(PublishActivity.this,"发表失败,请检查网络!");
+                    break;
+                case SUCCESS_UPLOAD_IMG:
+                    sendNoImagJoke(userid,tag,mContent,imgname);
+                    break;
+                case FAIL_UPLOAD_IMG:
+                    if(dialog.isShowing()){
+                        dialog.dismiss();
+                    }
                     ShowToast.show(PublishActivity.this,"发表失败,请检查网络!");
                     break;
             }
@@ -472,5 +522,12 @@ public class PublishActivity extends BaseActivity implements View.OnClickListene
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

@@ -12,10 +12,13 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.MyConfig;
 import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.net.RegisterNet;
+import app.jiyi.com.mjoke.utiltool.Base64Util;
 import app.jiyi.com.mjoke.utiltool.MyMd5;
 import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
@@ -105,7 +108,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             return;
         }
 
-        new RegisterNet(username, MyMd5.MD5(userpwd), new RegisterNet.SuccessRegisterCallback() {
+        new RegisterNet(Base64Util.encode(username.getBytes()), MyMd5.MD5(userpwd), new RegisterNet.SuccessRegisterCallback() {
             @Override
             public void onSuccess(String result) {
 //                ShowToast.show(RegisterActivity.this,result);
@@ -132,5 +135,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

@@ -76,7 +76,7 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
     }
 
 
-    public static final int GETJOKE_SUCCESS=1;
+    public static final int GETJOKE_SUCCESS=0x11;
     public static final int GETJOKE_FAIL=2;
     public static final int LOADMORE_GETJOKE_SUCCESS=3;
     public static final int LOADMORE_GETJOKE_FAIL=4;
@@ -145,7 +145,7 @@ public class Tab01Fragment extends Fragment implements SwipeRefreshLayout.OnRefr
         new GetJokesNet(joke_id, MyConfig.SCROLL_REFRESH, count,MyConfig.FRAGMENT_TYPE_NEW,new GetJokesNet.SuccessGetJokeCallback() {
             @Override
             public void onSuccess(String result) {
-//                MyLog.i("jiyihahah",""+result);
+//                MyLog.i("jiyiren","frag01:"+result);
                 String res= MyUtils.getGson(result,MyConfig.KEY_RESULT);
                 if(res.equals(MyConfig.RESULT_SUCCESS)){
                     try {

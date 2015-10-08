@@ -9,7 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * 沉浸式activity的运用
+ * 沉浸式activity的运用基activity
  */
 public class BaseActivity extends FragmentActivity {
 

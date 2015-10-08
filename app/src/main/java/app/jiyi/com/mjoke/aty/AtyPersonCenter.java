@@ -18,14 +18,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.sdk.android.oss.OSSService;
+import com.alibaba.sdk.android.oss.model.OSSException;
+import com.alibaba.sdk.android.oss.storage.OSSBucket;
+import com.alibaba.sdk.android.oss.storage.OSSFile;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -349,10 +355,36 @@ public class AtyPersonCenter extends BaseActivity implements View.OnClickListene
         @Override
         public void run() {
             // TODO Auto-generated method stub
-            uploadFile(Save_path,MyConfig.URL_UPLOAD_IMG);
+            //uploadFile(Save_path,MyConfig.URL_UPLOAD_IMG);
+            ossuploadfile(Save_path);
         }
 
     };
+
+    //下面的这个是同步的方法，因为它是在Runnable里执行的，也就是在线程里，所有没有用异步方法。
+    //在主线程执行则要用异步方法
+    private void ossuploadfile(String srcPath){
+        OSSService ossService=mapp.getOssService();
+        OSSBucket ossBucket=ossService.getOssBucket(App.bucketName);
+        OSSFile ossFile=mapp.getOssService().getOssFile(ossBucket,mapp.getUserToken()+".png");
+        try {
+            ossFile.setUploadFilePath(srcPath,"png");
+            ossFile.enableUploadCheckMd5sum();
+            ossFile.upload();
+            mHandler.sendEmptyMessage(MyConfig.SUCCESS);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(MyConfig.FAIL);
+            return;
+        } catch (OSSException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(MyConfig.FAIL);
+            return;
+        }
+
+
+    }
+
 
     public void uploadFile(String srcPath,String uploadurl){
         String end = "\r\n";
@@ -460,6 +492,13 @@ public class AtyPersonCenter extends BaseActivity implements View.OnClickListene
         }
         initChangeView();
         super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override

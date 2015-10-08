@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.telly.floatingaction.FloatingAction;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,6 +40,11 @@ import app.jiyi.com.mjoke.fragment.Tab02Fragment;
 import app.jiyi.com.mjoke.fragment.Tab03Fragment;
 import app.jiyi.com.mjoke.fragment.Tab04Fragment;
 
+/**
+ * 这个是app的主界面
+ * 从欢迎界面到此界面
+ * MainActivity--->this
+ */
 public class AtyMainView extends BaseActivity implements View.OnClickListener{
 
     private int mCurrentPage=0;
@@ -207,24 +213,44 @@ public class AtyMainView extends BaseActivity implements View.OnClickListener{
                 if(mCurrentPage!=0){
                     mViewPager.setCurrentItem(0);
                     mCurrentPage=0;
+                }else{
+                    if(mDatas!=null&&mDatas.size()>0) {
+                        Tab01Fragment t1f = (Tab01Fragment) mDatas.get(0);
+                        t1f.refreshForAct();
+                    }
                 }
                 break;
             case R.id.rl_tab02:
                 if(mCurrentPage!=1){
                     mViewPager.setCurrentItem(1);
                     mCurrentPage=1;
+                }else{
+                    if(mDatas!=null&&mDatas.size()>0) {
+                        Tab02Fragment t2f = (Tab02Fragment) mDatas.get(1);
+                        t2f.refreshForAct();
+                    }
                 }
                 break;
             case R.id.rl_tab03:
                 if(mCurrentPage!=2){
                     mViewPager.setCurrentItem(2);
                     mCurrentPage=2;
+                }else{
+                    if(mDatas!=null&&mDatas.size()>0) {
+                        Tab03Fragment t3f = (Tab03Fragment) mDatas.get(2);
+                        t3f.refreshForAct();
+                    }
                 }
                 break;
             case R.id.rl_tab04:
                 if(mCurrentPage!=3){
                     mViewPager.setCurrentItem(3);
                     mCurrentPage=3;
+                }else{
+                    if(mDatas!=null&&mDatas.size()>0) {
+                        Tab04Fragment t4f = (Tab04Fragment) mDatas.get(3);
+                        t4f.refreshForAct();
+                    }
                 }
                 break;
         }
@@ -343,6 +369,13 @@ public class AtyMainView extends BaseActivity implements View.OnClickListener{
             }
 //        }
         super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     private long exitTime=0;
@@ -362,6 +395,7 @@ public class AtyMainView extends BaseActivity implements View.OnClickListener{
                     Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
         } else {
+            MobclickAgent.onKillProcess(this);
             finish();
             System.exit(0);
         }

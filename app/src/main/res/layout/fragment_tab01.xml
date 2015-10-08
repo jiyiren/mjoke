@@ -5,13 +5,6 @@
     android:orientation="vertical"
     tools:context="com.jiyiren.jiyi.myapp4.tabfragment.Tab01Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:textSize="20sp"-->
-        <!--android:text="@string/mainview_tab_01" />-->
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/tab01_swipe_ly"
         android:layout_width="match_parent"

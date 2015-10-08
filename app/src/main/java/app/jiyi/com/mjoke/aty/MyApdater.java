@@ -20,6 +20,7 @@ import app.jiyi.com.mjoke.db.DBManager;
 import app.jiyi.com.mjoke.net.UserCollectNet;
 import app.jiyi.com.mjoke.net.UserLookNet;
 import app.jiyi.com.mjoke.net.ZanNet;
+import app.jiyi.com.mjoke.utiltool.Base64Util;
 import app.jiyi.com.mjoke.utiltool.BitmapCache;
 import app.jiyi.com.mjoke.utiltool.CommonAdapter;
 import app.jiyi.com.mjoke.utiltool.MyLog;
@@ -63,7 +64,7 @@ public class MyApdater extends CommonAdapter<SingleJoke> {
         ImageView iv_sex=holder.getView(R.id.item_iv_sex);//性别
         String name=singleJoke.getUsername();
         if(name!=null&&!name.equals("")) {
-            tv_name.setText(name);
+            tv_name.setText(new String(Base64Util.decode(name)));
             if(singleJoke.getSex().equals(MyConfig.VALUE_SEX_MAN)){
                 iv_sex.setImageResource(R.mipmap.user_sex_man);
             }else{
@@ -75,16 +76,20 @@ public class MyApdater extends CommonAdapter<SingleJoke> {
         }
 
         TextView tv_time=holder.getView(R.id.item_tv_time);//时间
-        tv_time.setText(singleJoke.getCreatetime());
+
+        String timetme=singleJoke.getCreatetime();
+        tv_time.setText(timetme.substring(0, timetme.length() - 2));
+
         TextView tv_content=holder.getView(R.id.item_tv_content);//内容
-        tv_content.setText(singleJoke.getContent());
+//        tv_content.setText(singleJoke.getContent());
+        tv_content.setText(singleJoke.getBase64DecodeContent());
 
         ImageView iv_content=holder.getView(R.id.iv_item_pic);//内容图片
         if(singleJoke.getIshasing().equals("1")){
             iv_content.setVisibility(View.VISIBLE);
             ImageLoader.ImageListener mlistener=ImageLoader.getImageListener(iv_content, R.mipmap.item_default_bg,
                     R.mipmap.item_default_bg);
-            loader.get(MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getJoke_id()+".jpg",mlistener);
+            loader.get(MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getImgurl()+".jpg",mlistener);
         }else{
             iv_content.setVisibility(View.GONE);
         }
@@ -106,6 +111,14 @@ public class MyApdater extends CommonAdapter<SingleJoke> {
                     doUserLook(singleJoke.getJoke_id(),id);
                 }
                 JokeDetailActivity.enterJokeDetailAty(context,singleJoke);
+            }
+        });
+        ll_content.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+//                ShareDialogActivity.enterAtyShareCenter(context,singleJoke);
+                CopyDialogActivity.enterAtyCopyDialog(context,singleJoke);
+                return true;
             }
         });
 

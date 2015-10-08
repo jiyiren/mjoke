@@ -20,14 +20,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.sdk.android.oss.OSSService;
+import com.alibaba.sdk.android.oss.model.OSSException;
+import com.alibaba.sdk.android.oss.storage.OSSBucket;
+import com.alibaba.sdk.android.oss.storage.OSSFile;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -208,6 +214,7 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
             this.finish();
             return;
         }
+        pd.setMessage("正在上传修改信息..");
         pd.show();
         new ModifyNet(idtoken, current_username, current_sex, current_motto, new ModifyNet.SuccessModifyCallback() {
             @Override
@@ -421,10 +428,35 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
         @Override
         public void run() {
             // TODO Auto-generated method stub
-            uploadFile(Save_path,MyConfig.URL_UPLOAD_IMG);
+            //uploadFile(Save_path,MyConfig.URL_UPLOAD_IMG);
+            ossuploadfile(Save_path);
         }
 
     };
+
+
+    private void ossuploadfile(String srcPath){
+        OSSService ossService=mapp.getOssService();
+        OSSBucket ossBucket=ossService.getOssBucket(App.bucketName);
+        OSSFile ossFile=mapp.getOssService().getOssFile(ossBucket,mapp.getUserToken()+".png");
+        try {
+            ossFile.setUploadFilePath(srcPath,"png");
+            ossFile.enableUploadCheckMd5sum();
+            ossFile.upload();
+            mHandler.sendEmptyMessage(SUCCESS_IMG_UPLOAD);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(FAIL_IMG_UPLOAD);
+            return;
+        } catch (OSSException e) {
+            e.printStackTrace();
+            mHandler.sendEmptyMessage(FAIL_IMG_UPLOAD);
+            return;
+        }
+
+
+    }
+
 
     public void uploadFile(String srcPath,String uploadurl){
         String end = "\r\n";
@@ -518,5 +550,12 @@ public class EditInfoActivity extends BaseActivity implements View.OnClickListen
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
         initChangeView();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

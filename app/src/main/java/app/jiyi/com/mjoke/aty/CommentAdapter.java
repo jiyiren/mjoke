@@ -6,18 +6,21 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.MyConfig;
 import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.bean.OneCommentBean;
+import app.jiyi.com.mjoke.utiltool.Base64Util;
 import app.jiyi.com.mjoke.utiltool.BitmapCache;
 import app.jiyi.com.mjoke.utiltool.CommonAdapter;
 import app.jiyi.com.mjoke.utiltool.ViewHolder;
 
 /**
  * Created by JIYI on 2015/9/8.
+ * 评论的适配器
  */
 public class CommentAdapter extends CommonAdapter<OneCommentBean> {
 
@@ -45,7 +48,11 @@ public class CommentAdapter extends CommonAdapter<OneCommentBean> {
             loader.get(MyConfig.BASE_IMG + "/" + oneCommentBean.getUser_id() + ".png", listener);
 
             if(oneCommentBean.getUser_name()!=null&&!oneCommentBean.getUser_name().equals("")){
-                tv_name.setText(oneCommentBean.getUser_name());
+                try {
+                    tv_name.setText(new String(Base64Util.decode(oneCommentBean.getUser_name()),"UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }else{
                 tv_name.setText("匿名者");
                 iv_header.setImageResource(R.mipmap.user_big_icon);
@@ -62,7 +69,11 @@ public class CommentAdapter extends CommonAdapter<OneCommentBean> {
         }
 
         if(oneCommentBean.getCom_content()!=null&&!oneCommentBean.getCom_content().equals("")){
-            tv_content.setText(oneCommentBean.getCom_content());
+            try {
+                tv_content.setText(new String(Base64Util.decode(oneCommentBean.getCom_content()),"UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }else{
             tv_content.setText("该楼主跑了~~");
         }

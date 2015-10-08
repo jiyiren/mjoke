@@ -7,7 +7,7 @@ import app.jiyi.com.mjoke.MyConfig;
  * 无图文的说说发表
  */
 public class PublicJokeNoImgNet {
-    public PublicJokeNoImgNet(String token,String type,String content, final SuccessPublicJokeNoImgCallback successPublicJokeNoImgCallback,
+    public PublicJokeNoImgNet(String token,String type,String content, String imgname,final SuccessPublicJokeNoImgCallback successPublicJokeNoImgCallback,
                               final FailPublicJokeNoImgCallback failPublicJokeNoImgCallback){
         new NetConnection(MyConfig.URL_PUBLISHJOKE_NOIMG, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
@@ -19,7 +19,7 @@ public class PublicJokeNoImgNet {
             public void onFail() {
                 failPublicJokeNoImgCallback.onFail();
             }
-        },MyConfig.KEY_TOKEN,token,MyConfig.KEY_JOKE_TYPE,type,MyConfig.KEY_JOKE_CONTENT,content);
+        },MyConfig.KEY_TOKEN,token,MyConfig.KEY_JOKE_TYPE,type,MyConfig.KEY_JOKE_CONTENT,content,MyConfig.JOKE_CONTENT_IMG,imgname);
 
     }
 

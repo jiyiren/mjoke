@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.R;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 import app.jiyi.com.mjoke.utilview.photoview.PhotoView;
@@ -53,5 +55,17 @@ public class DownImgSeeActivity extends BaseActivity {
                 DownImgSeeActivity.this.finish();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".App"
@@ -113,6 +116,14 @@
             android:name=".aty.DownImgSeeActivity"
             android:label="@string/title_activity_down_img_see" >
         </activity>
+        <activity
+            android:name=".aty.CopyDialogActivity"
+            android:label="@string/title_activity_copy_dialog"
+            android:theme="@style/ShareDialogTheme">
+        </activity>
+
+        <meta-data android:value="55f825cae0f55ad216001110" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="xiaomi" android:name="UMENG_CHANNEL"/>
     </application>
 
 </manifest>

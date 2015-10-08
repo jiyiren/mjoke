@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:background="@drawable/share_bg"
+    tools:context="app.jiyi.com.mjoke.aty.CopyDialogActivity">
+    <Button
+        android:id="@+id/copydialog_copy"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/copydialog_copy"
+        android:gravity="center"
+        android:text="复制"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        />
+    <Button
+        android:id="@+id/copydialog_jubao"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/copydialog_jubao"
+        android:gravity="center"
+        android:text="举报"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>

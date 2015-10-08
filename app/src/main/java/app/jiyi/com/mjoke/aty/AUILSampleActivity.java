@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,6 +31,11 @@ import app.jiyi.com.mjoke.utiltool.MyMd5;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 import app.jiyi.com.mjoke.utilview.photoview.PhotoView;
 
+/**
+ * 主要是完整显示joke图片
+ * 从joke详细信息里点击图片进入这个界面
+ * jokeDetailActivity---->this
+ */
 public class AUILSampleActivity extends BaseActivity implements View.OnClickListener{
 
     private PhotoView photoView;
@@ -173,5 +179,17 @@ public class AUILSampleActivity extends BaseActivity implements View.OnClickList
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

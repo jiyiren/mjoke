@@ -18,6 +18,7 @@ import com.tencent.mm.sdk.modelmsg.WXTextObject;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.umeng.analytics.MobclickAgent;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -34,6 +35,9 @@ import app.jiyi.com.mjoke.bean.SingleJoke;
 import app.jiyi.com.mjoke.utiltool.MyUtils;
 import app.jiyi.com.mjoke.utiltool.ShowToast;
 
+/**
+ * 分享界面对话框
+ */
 public class ShareDialogActivity extends Activity implements View.OnClickListener{
 
     private SingleJoke singleJoke;
@@ -111,7 +115,7 @@ public class ShareDialogActivity extends Activity implements View.OnClickListene
                     return;
                 }
                 if(singleJoke.getIshasing().equals("1")) {
-                    String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getJoke_id()+".jpg";
+                    String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getImgurl()+".jpg";
 //                    String imgurl="https://www.baidu.com/img/bd_logo1.png";
                     shareToWeixinUrl(imgurl,WEIXIN_FRIEND);
                 }else{
@@ -128,7 +132,7 @@ public class ShareDialogActivity extends Activity implements View.OnClickListene
                     return;
                 }
                 if(singleJoke.getIshasing().equals("1")) {
-                    String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getJoke_id()+".jpg";
+                    String imgurl=MyConfig.BASE_IMG_CONTENT+"/"+singleJoke.getImgurl()+".jpg";
                     shareToWeixinUrl(imgurl,WEIXIN_ZONE);
                 }else{
                     shareWeixin(WEIXIN_ZONE);
@@ -139,7 +143,7 @@ public class ShareDialogActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.share_other:
 //                send_Binary_Img(WEIXIN_FRIEND);
-                String content=singleJoke.getContent();
+                String content= singleJoke.getBase64DecodeContent();
                 String title;
                 if(content.length()>8) {
                     title = content.substring(0, 8) + "...";
@@ -172,9 +176,10 @@ private void shareToWeixinUrl(final String imgurl, final int weixintype){
 
     private void send_Url_Img(Bitmap bitmap,int type){
         WXWebpageObject  webobj=new WXWebpageObject();
-        webobj.webpageUrl= MyConfig.BASE_SHARE_TO_OTHER+singleJoke.getJoke_id();//分享的url地址
+        webobj.webpageUrl= MyConfig.BASE_SHARE_TO_OTHER+singleJoke.getJoke_id();//分享的url地址,后面的id是为了查询
 
-        String content=singleJoke.getContent();
+        String content= singleJoke.getBase64DecodeContent();
+
         WXMediaMessage msg=new WXMediaMessage(webobj);
         if(content.length()>8) {
             msg.title = content.substring(0, 8) + "....";
@@ -195,35 +200,15 @@ private void shareToWeixinUrl(final String imgurl, final int weixintype){
             req.scene=SendMessageToWX.Req.WXSceneTimeline;
         }
         wexinapi.sendReq(req);
+
         this.finish();
     }
-
-
-//    private static final int WEIXIN_FAIL=0x11;
-//    private Handler mhandler=new Handler(){
-//        @Override
-//        public void handleMessage(Message msg) {
-////            if(dialog.isShowing()){
-////                dialog.dismiss();
-////            }
-//            switch (msg.what){
-//                case WEIXIN_FRIEND:
-//                    send_Url_Img(WEIXIN_FRIEND);
-//                    break;
-//                case WEIXIN_ZONE:
-//                    send_Url_Img(WEIXIN_ZONE);
-//                    break;
-//                case WEIXIN_FAIL:
-//                    break;
-//            }
-//        }
-//    };
 
 
     //分享文字内容
     private void shareWeixin(int type){
 //        wexinapi.openWXApp();//打开微信客户端
-        String mcontent=singleJoke.getContent();
+        String mcontent= singleJoke.getBase64DecodeContent();
         //创建分享文本
         WXTextObject wtext=new WXTextObject();
         wtext.text=mcontent+MyConfig.SHARE_WEIXIN_TEXT_HOUZHUI;
@@ -310,5 +295,17 @@ private void shareToWeixinUrl(final String imgurl, final int weixintype){
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

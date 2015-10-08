@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
+
 import app.jiyi.com.mjoke.App;
 import app.jiyi.com.mjoke.MyConfig;
 import app.jiyi.com.mjoke.R;
@@ -113,5 +115,12 @@ public class SendQuesActivity extends BaseActivity implements OnClickListener{
         if(toptilebar!=null){
             toptilebar.setBackgroundColor(App.getAppInstance().getThemeColor());
         }
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

@@ -4,6 +4,13 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import com.alibaba.sdk.android.oss.OSSService;
+import com.alibaba.sdk.android.oss.OSSServiceProvider;
+import com.alibaba.sdk.android.oss.model.AccessControlList;
+import com.alibaba.sdk.android.oss.model.AuthenticationType;
+import com.alibaba.sdk.android.oss.model.ClientConfiguration;
+import com.alibaba.sdk.android.oss.model.TokenGenerator;
+import com.alibaba.sdk.android.oss.util.OSSToolKit;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
@@ -14,6 +21,11 @@ import app.jiyi.com.mjoke.bean.User;
  */
 public class App extends Application {
 
+    String accessKey="2sQj6aLbGBIyfAsp";
+    String screctKey="FI1YIVpEUS13k72pPnp2MUDxtyn6Hw";
+    public static final String bucketName="mjoke";
+    public static OSSService ossService= OSSServiceProvider.getService();
+
     public static RequestQueue queues;
     private static App mapp;
     private static SharedPreferences sp;
@@ -21,9 +33,39 @@ public class App extends Application {
     @Override
     public void onCreate() {
         mapp=this;
+        initOSS();
         queues= Volley.newRequestQueue(getApplicationContext());
         super.onCreate();
     }
+
+    //初始化阿里云存储
+    private void initOSS(){
+        ossService.setApplicationContext(getApplicationContext());
+        ossService.setGlobalDefaultHostId("oss-cn-shanghai.aliyuncs.com");
+        ossService.setGlobalDefaultACL(AccessControlList.PUBLIC_READ); // 默认为private，可以设置为公共读
+        ossService.setAuthenticationType(AuthenticationType.ORIGIN_AKSK); // 设置加签类型为原始AK/SK加签
+        ossService.setGlobalDefaultTokenGenerator(new TokenGenerator() { // 设置全局默认加签器
+            @Override
+            public String generateToken(String httpMethod, String md5, String type, String date,
+                                        String ossHeaders, String resource) {
+
+                String content = httpMethod + "\n" + md5 + "\n" + type + "\n" + date + "\n" + ossHeaders
+                        + resource;
+
+                return OSSToolKit.generateToken(accessKey, screctKey, content);
+            }
+        });
+        ossService.setCustomStandardTimeWithEpochSec(System.currentTimeMillis() / 1000);
+
+        ClientConfiguration conf = new ClientConfiguration();
+        conf.setConnectTimeout(15 * 1000); // 设置全局网络连接超时时间，默认30s
+        conf.setSocketTimeout(15 * 1000); // 设置全局socket超时时间，默认30s
+        conf.setMaxConnections(50); // 设置全局最大并发网络链接数, 默认50
+        ossService.setClientConfiguration(conf);
+
+    }
+
+    public static OSSService getOssService(){return ossService;}
 
     public static RequestQueue getQueues(){
         return queues;
