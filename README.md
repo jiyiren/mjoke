@@ -55,7 +55,7 @@
 
 ## 关于
 
-[About Me](http://jiyiren.github.io/about/)
-[我的博客](http://jiyiren.github.io/)
-[新浪微博](http://weibo.com/jiyi1459050189)
+* [About Me](http://jiyiren.github.io/about/)
+* [我的博客](http://jiyiren.github.io/)
+* [新浪微博](http://weibo.com/jiyi1459050189)
 
