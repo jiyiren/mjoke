@@ -21,9 +21,14 @@ import app.jiyi.com.mjoke.bean.User;
  */
 public class App extends Application {
 
-    String accessKey="2sQj6aLbGBIyfAsp";
-    String screctKey="FI1YIVpEUS13k72pPnp2MUDxtyn6Hw";
-    public static final String bucketName="mjoke";
+    /**
+     * 大家换成自己的阿里云bucket的accessKey、screctKey、bucketName，
+     * 还有下面的ossService的服务地址就能将图片上传到自己的阿里云上了
+     */
+    String accessKey="2sQj6aLbGBIyfAsp";//请替换
+    String screctKey="FI1YIVpEUS13k72pPnp2MUDxtyn6Hw";//请替换
+    public static final String bucketName="mjoke";//请替换
+
     public static OSSService ossService= OSSServiceProvider.getService();
 
     public static RequestQueue queues;
@@ -41,7 +46,7 @@ public class App extends Application {
     //初始化阿里云存储
     private void initOSS(){
         ossService.setApplicationContext(getApplicationContext());
-        ossService.setGlobalDefaultHostId("oss-cn-shanghai.aliyuncs.com");
+        ossService.setGlobalDefaultHostId("oss-cn-shanghai.aliyuncs.com");//请替换
         ossService.setGlobalDefaultACL(AccessControlList.PUBLIC_READ); // 默认为private，可以设置为公共读
         ossService.setAuthenticationType(AuthenticationType.ORIGIN_AKSK); // 设置加签类型为原始AK/SK加签
         ossService.setGlobalDefaultTokenGenerator(new TokenGenerator() { // 设置全局默认加签器
