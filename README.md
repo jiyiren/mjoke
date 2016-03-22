@@ -4,7 +4,7 @@
 
 ## 上线
 
-> 目前已经上线，只是想体验一下上线的过程！！以及各大平台的分发机制，体验U盟统计和多渠道打包方法。
+> 目前已经上线，只是想体验一下上线的过程！！以及各大平台的分发机制，体验U盟统计和多渠道打包方法。O(∩_∩)O~
 
 * 小米应用商店：搜索mjoke或者[点我下载](http://app.mi.com/detail/113066)
 * 豌豆荚应用中心：搜索mjoke或者[点我下载](http://www.wandoujia.com/apps/app.jiyi.com.mjoke)
@@ -29,15 +29,16 @@
 * 阿里云Bucket文件上传
 
 ## 项目结构
-* [详细说明](http://jiyiren.github.io/2015/09/18/Mjoke%20app%E7%9A%84%E5%BC%80%E5%8F%91/)
+* [详细说明](http://jiyiren.github.io/2015/09/18/mjokeapp/)
 * 结构图(是个小应用)：
+
 ![](http://7xknpe.com1.z0.glb.clouddn.com/javafile2222222.png)
 
 ## 后台
 
 * (旧)阿里云ACE(云引擎)+云数据库RDS(Mysql)+对象存储(OSS)
 * (新)百度云BAE+百度云数据库MySQL+阿里的对象存储(OSS)
-* 项目结构：详细请看[我的博客](http://jiyiren.github.io/2015/09/18/Mjoke%20app%E7%9A%84%E5%BC%80%E5%8F%91/)
+* 项目结构：详细请看[我的博客](http://jiyiren.github.io/2015/09/18/mjokeapp/)
 	
 ![项目结构](http://img.blog.csdn.net/20150918143202630)
 
