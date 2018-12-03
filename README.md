@@ -1,21 +1,21 @@
 # Mjoke
 
-> 一个前期仿Material Design的发表分享的Android客户端，欢迎大家Follow
+> 一个前期仿 Material Design 的发表分享的 Android 客户端，欢迎大家 Follow
 
 ## 上线
 
 > 目前已经上线，只是想体验一下上线的过程！！以及各大平台的分发机制，体验U盟统计和多渠道打包方法。O(∩_∩)O~
 
-* 小米应用商店：搜索mjoke或者[点我下载](http://app.mi.com/detail/113066)
 * 豌豆荚应用中心：搜索mjoke或者[点我下载](http://www.wandoujia.com/apps/app.jiyi.com.mjoke)
 * 360应用中心：搜素mjoke或者[点我下载](http://shouji.360tpcdn.com/150917/806c975d3c51250c605ac6970cff9da9/app.jiyi.com.mjoke_2.apk)
 * Fir应用地址：[http://fir.im/mjoke](http://fir.im/mjoke)
+* 小米应用商店：搜索mjoke或者[点我下载](http://app.mi.com/detail/113066)
 
 ## 预览
 
-![1](http://7xknpe.com1.z0.glb.clouddn.com/123.jpg)
+![1](http://img.godjiyi.cn/123.jpg)
 
-![4](http://7xknpe.com1.z0.glb.clouddn.com/456.jpg)
+![4](http://img.godjiyi.cn/456.jpg)
 
 ## 实现的功能
 
@@ -32,7 +32,7 @@
 * [详细说明](http://jiyiren.github.io/2015/09/18/mjokeapp/)
 * 结构图(是个小应用)：
 
-![](http://7xknpe.com1.z0.glb.clouddn.com/javafile2222222.png)
+	![](http://img.godjiyi.cn/javafile2222222.png)
 
 ## 后台
 
@@ -40,7 +40,7 @@
 * (新)百度云BAE+百度云数据库MySQL+阿里的对象存储(OSS)
 * 项目结构：详细请看[我的博客](http://jiyiren.github.io/2015/09/18/mjokeapp/)
 	
-![项目结构](http://img.blog.csdn.net/20150918143202630)
+	![](http://img.godjiyi.cn/jy_mjoke_bg.jpg)
 
 
 ## 使用的开源库
